@@ -18,6 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include <string.h>
+#include <stdio.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -95,16 +97,16 @@ int main(void)
   MX_RTC_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  sprintf(uartBuffer, "Hello World\n");
-  HAL_UART_Transmit(&huart2, uartBuffer, strlen(uartBuffer), 100);
+  sprintf((char *)uartBuffer, "Hello World\n");
+  HAL_UART_Transmit(&huart2, uartBuffer, strlen((char *)uartBuffer), 100);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    sprintf(uartBuffer, "Counting loop: %d\n", i);
-    HAL_UART_Transmit(&huart2, uartBuffer, strlen(uartBuffer), 100);
+    sprintf((char *)uartBuffer, "Counting loop: %d\n", i);
+    HAL_UART_Transmit(&huart2, uartBuffer, strlen((char *)uartBuffer), 100);
     i++;
     HAL_Delay(1000);
     /* USER CODE END WHILE */
