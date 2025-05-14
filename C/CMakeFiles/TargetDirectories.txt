@@ -1,0 +1,6 @@
+/Users/hoony/stm/C/CMakeFiles/001_UART.dir
+/Users/hoony/stm/C/CMakeFiles/edit_cache.dir
+/Users/hoony/stm/C/CMakeFiles/rebuild_cache.dir
+/Users/hoony/stm/C/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
+/Users/hoony/stm/C/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
+/Users/hoony/stm/C/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir

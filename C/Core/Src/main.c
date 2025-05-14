@@ -18,7 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include <string.h>
+#include <stdio.h>
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -45,8 +46,9 @@ RTC_HandleTypeDef hrtc;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-int i = 0;
-uint8_t uartBuffer[512];
+char rxBuffer[129];
+char txBuffer[256];
+int rxIndex = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -96,23 +98,47 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   sprintf(uartBuffer, "Hello World\n");
-  HAL_UART_Transmit(&huart2, uartBuffer, strlen(uartBuffer), 100);
+  HAL_UART_Transmit(&huart2, (uint8_t *)txBuffer, strlen(txBuffer), 100);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    sprintf(uartBuffer, "Counting loop: %d\n", i);
-    HAL_UART_Transmit(&huart2, uartBuffer, strlen(uartBuffer), 100);
-    i++;
-    HAL_Delay(1000);
-    /* USER CODE END WHILE */
+    uint8_t ch;
 
-    /* USER CODE BEGIN 3 */
+    // Polling 방식 1바이트 수신 (타임아웃 10ms)
+    if (HAL_UART_Receive(&huart2, &ch, 1, 10) == HAL_OK)
+    {
+      if (ch == '\r' || ch == '\n')  // 엔터 입력 시 처리
+      {
+        rxBuffer[rxIndex] = '\0';  // 문자열 종료
+
+        // "received: <입력값>" 형식으로 포맷팅
+        sprintf(txBuffer, "received: %s\n", rxBuffer);
+        HAL_UART_Transmit(&huart2, (uint8_t *)txBuffer, strlen(txBuffer), HAL_MAX_DELAY);
+
+        rxIndex = 0;  // 입력 버퍼 초기화
+      }
+      else
+      {
+        if (rxIndex < 128)  // 128바이트 이내만 허용
+        {
+          rxBuffer[rxIndex++] = ch;
+        }
+        else
+        {
+          // 초과 입력은 무시하고 초기화
+          rxIndex = 0;
+          strcpy(txBuffer, "Error: input too long\n");
+          HAL_UART_Transmit(&huart2, (uint8_t *)txBuffer, strlen(txBuffer), HAL_MAX_DELAY);
+        }
+      }
+    }
+
+    HAL_Delay(10);  // CPU 낭비 방지
   }
-  /* USER CODE END 3 */
-}
+
 
 /**
   * @brief System Clock Configuration
