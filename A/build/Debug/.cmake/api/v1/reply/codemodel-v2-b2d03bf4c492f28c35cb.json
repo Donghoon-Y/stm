@@ -60,14 +60,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "001_UART::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-001_UART-Debug-3d65a3cffeee54076949.json",
+					"jsonFile" : "target-001_UART-Debug-6530a64fc8d97262e5a6.json",
 					"name" : "001_UART",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 1,
 					"id" : "STM32_Drivers::@768a070a0fe75716b479",
-					"jsonFile" : "target-STM32_Drivers-Debug-fa9d6b810ace8545147b.json",
+					"jsonFile" : "target-STM32_Drivers-Debug-38afdb2e9211785113d7.json",
 					"name" : "STM32_Drivers",
 					"projectIndex" : 0
 				}

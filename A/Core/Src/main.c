@@ -105,7 +105,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    sprintf((char *)uartBuffer, "Counting loop: %d\n", i);
+    sprintf((char *)uartBuffer, "received: %d\n", i);
     HAL_UART_Transmit(&huart2, uartBuffer, strlen((char *)uartBuffer), 100);
     i++;
     HAL_Delay(1000);

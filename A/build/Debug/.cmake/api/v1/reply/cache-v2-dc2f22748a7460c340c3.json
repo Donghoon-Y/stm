@@ -1191,10 +1191,10 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "The CMake toolchain file"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "UNINITIALIZED",
 			"value" : "/Users/hoony/stm/A/cmake/gcc-arm-none-eabi.cmake"
 		},
 		{
