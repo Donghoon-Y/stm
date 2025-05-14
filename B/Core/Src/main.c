@@ -18,7 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-
+#include <string.h>
+#include <stdio.h>
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -45,8 +46,7 @@ RTC_HandleTypeDef hrtc;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-int i = 0;
-uint8_t uartBuffer[512];
+char uartBuffer[512];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -96,22 +96,42 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   sprintf(uartBuffer, "Hello World\n");
-  HAL_UART_Transmit(&huart2, uartBuffer, strlen(uartBuffer), 100);
+  HAL_UART_Transmit(&huart2, (unit8_t *)uartBuffer, strlen(uartBuffer), 100);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  int rxIndex = 0;
+  unit8_t ch;
+
+  
   while (1)
   {
-    sprintf(uartBuffer, "Counting loop: %d\n", i);
-    HAL_UART_Transmit(&huart2, uartBuffer, strlen(uartBuffer), 100);
-    i++;
-    HAL_Delay(1000);
-    /* USER CODE END WHILE */
+    if (HAL_UART_Receive(&huart2, &ch, 1, 10) == HAL_OK)
+    {
+      if (ch == '\r' || ch == '\n')  // 엔터 입력 시
+      {
+        uartBuffer[rxIndex] = '\0'; // 문자열 종료
 
-    /* USER CODE BEGIN 3 */
+        if (strcmp(uartBuffer, "test") == 0)
+        {
+          HAL_UART_Transmit(&huart2, (uint8_t *)"test\n", strlen("test\n"), 100);
+        }
+
+        rxIndex = 0; // 다음 입력을 위해 초기화
+      }
+      else
+      {
+        if (rxIndex < sizeof(uartBuffer) - 1)
+        {
+          uartBuffer[rxIndex++] = ch;
+        }
+      }
+    }
+
+    HAL_Delay(10); // CPU 낭비 방지용 딜레이
   }
-  /* USER CODE END 3 */
+  /* USER CODE END WHILE */
 }
 
 /**
