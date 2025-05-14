@@ -47,6 +47,8 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 char uartBuffer[512];
+int rxIndex = 0;
+uint8_t ch;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -101,9 +103,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  int rxIndex = 0;
-  unit8_t ch;
-
   
   while (1)
   {
