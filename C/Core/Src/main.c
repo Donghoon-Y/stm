@@ -97,7 +97,7 @@ int main(void)
   MX_RTC_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  sprintf(uartBuffer, "Hello World\n");
+  sprintf(txBuffer, "Hello World\n");
   HAL_UART_Transmit(&huart2, (uint8_t *)txBuffer, strlen(txBuffer), 100);
   /* USER CODE END 2 */
 
@@ -115,14 +115,14 @@ int main(void)
         rxBuffer[rxIndex] = '\0';  // 문자열 종료
 
         // "received: <입력값>" 형식으로 포맷팅
-        sprintf(txBuffer, "received: %s\n", rxBuffer);
+        snprintf(txBuffer, sizeof(txBuffer), "received: %s\n", rxBuffer);
         HAL_UART_Transmit(&huart2, (uint8_t *)txBuffer, strlen(txBuffer), HAL_MAX_DELAY);
 
         rxIndex = 0;  // 입력 버퍼 초기화
       }
       else
       {
-        if (rxIndex < 128)  // 128바이트 이내만 허용
+        if (rxIndex < sizeof(rxBuffer) - 18)  // 128바이트 이내만 허용
         {
           rxBuffer[rxIndex++] = ch;
         }

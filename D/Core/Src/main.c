@@ -45,8 +45,8 @@ RTC_HandleTypeDef hrtc;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-int i = 0;
-uint8_t uartBuffer[512];
+uint8_t rxByte;
+uint8_t uartBuffer[512] ;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -95,20 +95,17 @@ int main(void)
   MX_RTC_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  sprintf(uartBuffer, "Hello World\n");
-  HAL_UART_Transmit(&huart2, uartBuffer, strlen(uartBuffer), 100);
+  sprintf((char *)uartBuffer, "Hello World\n");
+  HAL_UART_Transmit(&huart2, uartBuffer, strlen((char *)uartBuffer), 100);
+
+  HAL_UART_Receive_IT(&huart2, &rxByte, 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    sprintf(uartBuffer, "Counting loop: %d\n", i);
-    HAL_UART_Transmit(&huart2, uartBuffer, strlen(uartBuffer), 100);
-    i++;
-    HAL_Delay(1000);
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
@@ -303,3 +300,29 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
+
+/* USER CODE BEGIN 4 */
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+{
+  if (huart->Instance == USART2)
+  {
+    uint8_t response = 0;
+
+    switch (rxByte)
+    {
+      case '1': response = 'A'; break;
+      case '2': response = 'B'; break;
+      case '3': response = 'C'; break;
+      default: response = 0; break;  // 무시
+    }
+
+    if (response != 0)
+    {
+      HAL_UART_Transmit(&huart2, &response, 1, 100);
+    }
+
+    // 다음 수신을 위해 인터럽트 다시 활성화
+    HAL_UART_Receive_IT(&huart2, &rxByte, 1);
+  }
+}
+/* USER CODE END 4 */
