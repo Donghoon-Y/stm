@@ -18,11 +18,11 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <string.h>
-#include <stdio.h>
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <string.h>
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,9 +46,10 @@ RTC_HandleTypeDef hrtc;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-char rxBuffer[129];
-char txBuffer[256];
-int rxIndex = 0;
+char msgBuffer[128];    // 수신 메시지 저장용
+char uartBuffer[160];   // 송신 메시지 저장용 ("received: " 포함)
+uint8_t receivedmsg;    // 수신된 문자
+int msgIndex = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,48 +98,51 @@ int main(void)
   MX_RTC_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  sprintf(txBuffer, "Hello World\n");
-  HAL_UART_Transmit(&huart2, (uint8_t *)txBuffer, strlen(txBuffer), 100);
+  sprintf(uartBuffer, "Hello World\n");
+  HAL_UART_Transmit(&huart2, (uint8_t *)uartBuffer, strlen(uartBuffer), 100);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
+{
+  if (HAL_UART_Receive(&huart2, &receivedmsg, 1, 10) == HAL_OK)
   {
-    uint8_t ch;
-
-    // Polling 방식 1바이트 수신 (타임아웃 10ms)
-    if (HAL_UART_Receive(&huart2, &ch, 1, 10) == HAL_OK)
+    if (receivedmsg == '\r' || receivedmsg == '\n')  // 엔터 입력 시 문자열 종료
     {
-      if (ch == '\r' || ch == '\n')  // 엔터 입력 시 처리
+      if (msgIndex > 0)
       {
-        rxBuffer[rxIndex] = '\0';  // 문자열 종료
+        msgBuffer[msgIndex] = '\0';  // 수신 문자열 종료
 
-        // "received: <입력값>" 형식으로 포맷팅
-        snprintf(txBuffer, sizeof(txBuffer), "received: %s\n", rxBuffer);
-        HAL_UART_Transmit(&huart2, (uint8_t *)txBuffer, strlen(txBuffer), HAL_MAX_DELAY);
+        // "received: 문자열" 형식으로 출력
+        sprintf(uartBuffer, "received: %s\r\n", msgBuffer);
+        HAL_UART_Transmit(&huart2, (uint8_t *)uartBuffer, strlen(uartBuffer), HAL_MAX_DELAY);
 
-        rxIndex = 0;  // 입력 버퍼 초기화
+        msgIndex = 0;  // 다음 입력을 위해 초기화
+      }
+    }
+    else
+    {
+      if (msgIndex < sizeof(msgBuffer) - 1)  // 최대 127자 수신 가능
+      {
+        msgBuffer[msgIndex++] = receivedmsg;
       }
       else
       {
-        if (rxIndex < sizeof(rxBuffer) - 18)  // 128바이트 이내만 허용
-        {
-          rxBuffer[rxIndex++] = ch;
-        }
-        else
-        {
-          // 초과 입력은 무시하고 초기화
-          rxIndex = 0;
-          strcpy(txBuffer, "Error: input too long\n");
-          HAL_UART_Transmit(&huart2, (uint8_t *)txBuffer, strlen(txBuffer), HAL_MAX_DELAY);
-        }
+        msgIndex = 0;
+        memset(msgBuffer, 0, sizeof(msgBuffer));
+        sprintf(uartBuffer, "error: buffer overflow\r\n");
+        HAL_UART_Transmit(&huart2, (uint8_t *)uartBuffer, strlen(uartBuffer), HAL_MAX_DELAY);
       }
     }
-
-    HAL_Delay(10);  // CPU 낭비 방지
   }
 
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+}
 
 /**
   * @brief System Clock Configuration

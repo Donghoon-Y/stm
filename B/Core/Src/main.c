@@ -18,11 +18,11 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <string.h>
-#include <stdio.h>
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <string.h>
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,9 +46,10 @@ RTC_HandleTypeDef hrtc;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-char uartBuffer[512];
-int rxIndex = 0;
-uint8_t ch;
+char msgBuffer[128];    // 입력 받은 메시지 저장용
+char uartBuffer[128];   // 출력용 버퍼 (sprintf 결과 저장)
+uint8_t receivedmsg;    // 수신된 단일 문자
+int msgIndex = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -98,39 +99,68 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   sprintf(uartBuffer, "Hello World\n");
-  HAL_UART_Transmit(&huart2, (unit8_t *)uartBuffer, strlen(uartBuffer), 100);
+  HAL_UART_Transmit(&huart2, (uint8_t *)uartBuffer, strlen(uartBuffer), 100);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   
-  while (1)
-  {
-    if (HAL_UART_Receive(&huart2, &ch, 1, 10) == HAL_OK)
-    {
-      if (ch == '\r' || ch == '\n')  // 엔터 입력 시
-      {
-        uartBuffer[rxIndex] = '\0'; // 문자열 종료
+/* USER CODE BEGIN WHILE */
+/* USER CODE BEGIN PV */
+char msgBuffer[128];    // 수신 메시지 저장용
+char uartBuffer[128];   // 출력용 메시지 버퍼
+uint8_t receivedmsg;    // 수신된 문자
+int msgIndex = 0;
+/* USER CODE END PV */
 
-        if (strcmp(uartBuffer, "test") == 0)
+/* USER CODE BEGIN WHILE */
+/* USER CODE BEGIN WHILE */
+while (1)
+{
+  if (HAL_UART_Receive(&huart2, &receivedmsg, 1, 10) == HAL_OK) // 시리얼에서 한 글자 수신
+  {
+    if (receivedmsg == '\r' || receivedmsg == '\n')  // 엔터 입력 감지
+    {
+      if (msgIndex > 0)  // 입력 문자열이 있을 경우에만 처리
+      {
+        msgBuffer[msgIndex] = '\0';  // 문자열 종료
+
+        // "test" 명령어 입력 시
+        if (strncmp(msgBuffer, "test", 4) == 0 && strlen(msgBuffer) == 4)
         {
-          HAL_UART_Transmit(&huart2, (uint8_t *)"test\n", strlen("test\n"), 100);
+          sprintf((char *)uartBuffer, "test\r\n");
+        }
+        else
+        {
+          sprintf((char *)uartBuffer, "received: %s\r\n", msgBuffer);  // 일반 수신 문자열 출력
         }
 
-        rxIndex = 0; // 다음 입력을 위해 초기화
+        HAL_UART_Transmit(&huart2, uartBuffer, strlen((char *)uartBuffer), 100);  // 출력
+        msgIndex = 0;  // 버퍼 초기화
+      }
+    }
+    else
+    {
+      // Buffer Overflow 방지
+      if (msgIndex < sizeof(msgBuffer) - 1)
+      {
+        msgBuffer[msgIndex++] = receivedmsg;
       }
       else
       {
-        if (rxIndex < sizeof(uartBuffer) - 1)
-        {
-          uartBuffer[rxIndex++] = ch;
-        }
+        msgIndex = 0;
+        memset(msgBuffer, 0, sizeof(msgBuffer));
+        sprintf((char *)uartBuffer, "error: buffer overflow\r\n");
+        HAL_UART_Transmit(&huart2, uartBuffer, strlen((char *)uartBuffer), 100);
       }
     }
-
-    HAL_Delay(10); // CPU 낭비 방지용 딜레이
   }
-  /* USER CODE END WHILE */
+
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
 }
 
 /**

@@ -1,8 +1,8 @@
 # ninja log v5
 2	458	1747220612922158508	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.obj	ec5df22b8a4962b8
-1	326	1747220612789144376	CMakeFiles/001_UART.dir/Core/Src/main.c.obj	4172a9b0781c5e0
-1	359	1747220612818415967	CMakeFiles/001_UART.dir/Core/Src/stm32f4xx_hal_msp.c.obj	f939dea09a99bbd4
 167	496	1747220612962936886	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj	70649598e4dc62bc
+1	359	1747220612818415967	CMakeFiles/001_UART.dir/Core/Src/stm32f4xx_hal_msp.c.obj	f939dea09a99bbd4
+1	241	1747287425759053661	CMakeFiles/001_UART.dir/Core/Src/main.c.obj	4172a9b0781c5e0
 2	289	1747220612756008217	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f4xx.c.obj	807fcc04ec43f0fd
 2	377	1747220612839804131	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj	1845add717c4a172
 1	167	1747220612635414744	CMakeFiles/001_UART.dir/startup_stm32f411xe.s.obj	4f57ce06d79cab2e
@@ -21,5 +21,5 @@
 458	701	1747220613169420140	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj	b2de58001d27f6cd
 463	696	1747220613164225661	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj	8805717c423b4c84
 1	168	1747220612636392990	CMakeFiles/001_UART.dir/Core/Src/sysmem.c.obj	b20aa63701a22c32
-820	921	1747220613387274973	001_UART.elf	bcee0e0cbfd4c1d2
+241	371	1747287425886116991	001_UART.elf	bcee0e0cbfd4c1d2
 496	731	1747220613200052808	cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj	406f4e571fda713b
