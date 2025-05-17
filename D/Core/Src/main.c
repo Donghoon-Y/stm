@@ -46,7 +46,7 @@ RTC_HandleTypeDef hrtc;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-uint8_t receivedChar;
+uint8_t receivedChar; //uart로 입력된 문자 1개를 저장할 수 있는 변수를 설정 -> 인터럽트 방식으로 수신 시 HAL_UART_Receive_IT()에 결과를 저장
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -103,6 +103,7 @@ int main(void)
   HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
 
   HAL_UART_Receive_IT(&huart2, &receivedChar, 1);
+  //USART2 포트를 통해서 통신, 수신한 문제를 receivedChar에 저장, 1바트만 수신하면 된다. -> 이렇게 명령해서 작동이 되면 HAL_UART_RxCpltCallback() 함수가 호출된다.
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -282,20 +283,20 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
+void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) //HAL_UART_Receive_IT()로 등록된 수신이 성공하면 호출됨
 {
-  if (huart->Instance == USART2)
+  if (huart->Instance == USART2) //USART2에서 수신된 경우만 처리
   {
-    // 개행 문자는 무시
+    // 개행 문자(enter)는 무시하고, 다음 문자 수신만 대기
     if (receivedChar == '\r' || receivedChar == '\n')
     {
       HAL_UART_Receive_IT(&huart2, &receivedChar, 1);
       return;
     }
 
-    char outputChar = 0;
+    char outputChar = 0; //UART로 받은 문자를 판단해서 출력할 문자를 저장할 변수
 
-    switch (receivedChar)
+    switch (receivedChar) //입력된 문자(receivedChar)를 기준으로 분기
     {
       case '1':
         outputChar = 'A';
@@ -312,6 +313,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     }
 
     HAL_UART_Transmit(&huart2, (uint8_t *)&outputChar, 1, HAL_MAX_DELAY);
+    //처리된 문자(outputChar)를 UART2로 1바이트 전송
+    //HAL_MAX_DELAY: 블로킹 방식으로 전송 완료까지 무한 대기
 
     // 다음 수신 재등록
     HAL_UART_Receive_IT(&huart2, &receivedChar, 1);

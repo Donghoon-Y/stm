@@ -117,13 +117,14 @@ int main(void)
         // "received: 문자열" 형식으로 출력
         sprintf(uartBuffer, "received: %s\r\n", msgBuffer);
         HAL_UART_Transmit(&huart2, (uint8_t *)uartBuffer, strlen(uartBuffer), HAL_MAX_DELAY);
+        //B번과 다르게 굳이 비교해서 출력할 필요가 없어서 입력된 문자열을 출력하고 전달하는 느낌
 
         msgIndex = 0;  // 다음 입력을 위해 초기화
       }
     }
     else
     {
-      if (msgIndex < sizeof(msgBuffer) - 1)  // 최대 127자 수신 가능
+      if (msgIndex < sizeof(msgBuffer) - 1)  // 최대 127자 수신 가능(조건에 128바이트 이내 문자만 수신하라고 했으니까)
       {
         msgBuffer[msgIndex++] = receivedmsg;
       }

@@ -99,7 +99,7 @@ int main(void)
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
   sprintf(uartBuffer, "Hello World\n");
-  HAL_UART_Transmit(&huart2, (uint8_t *)uartBuffer, strlen(uartBuffer), 100);
+  HAL_UART_Transmit(&huart2, (uint8_t *)uartBuffer, strlen(uartBuffer), 100); //HAL_UART_Transmit은 uint_8 타입을 요구해서 변환을 해줘야 함.
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -107,47 +107,49 @@ int main(void)
   
 /* USER CODE BEGIN WHILE */
 /* USER CODE BEGIN PV */
-char msgBuffer[128];    // 수신 메시지 저장용
-char uartBuffer[128];   // 출력용 메시지 버퍼
-uint8_t receivedmsg;    // 수신된 문자
-int msgIndex = 0;
 /* USER CODE END PV */
 
 /* USER CODE BEGIN WHILE */
 /* USER CODE BEGIN WHILE */
 while (1)
 {
-  if (HAL_UART_Receive(&huart2, &receivedmsg, 1, 10) == HAL_OK) // 시리얼에서 한 글자 수신
+  if (HAL_UART_Receive(&huart2, &receivedmsg, 1, 10) == HAL_OK) 
+  // uart2를 통해 수신, 무언가 수신되면 receivedmsg에 저장됨, 1바이트(한글자씩) 수신을 시도, 10ms 이내로 수신해야 오류가 아님
+  // HAL_OK는 수신 함수가 성공했는지 확인한다는 뜻으로, HAL_UART_Receive가 데이터를 잘 수신하고 정상 종료되면 HAL_OK를 리턴한다.
   {
     if (receivedmsg == '\r' || receivedmsg == '\n')  // 엔터 입력 감지
     {
       if (msgIndex > 0)  // 입력 문자열이 있을 경우에만 처리
       {
-        msgBuffer[msgIndex] = '\0';  // 문자열 종료
+        msgBuffer[msgIndex] = '\0';  // 문자열 종료를 의미 -> 입력된 문자 배열 끝에 \0울 붙여서 정상적인 C 문자열로 만들어줘야 strlen, sprintf등이 잘 작동한다.
 
         // "test" 명령어 입력 시
         if (strncmp(msgBuffer, "test", 4) == 0 && strlen(msgBuffer) == 4)
+        // msgBuffer랑 test를 앞에서 한글자씩 비교해서 같으면 0, 다르면 양수 또는 음수를 반환한다., 4는 앞에서부터 4글자를 비교하겠다를 의미한다.
+        // 위 if문은 입력 문자열이 test랑 같고, 정확히 4글자일 때만 작동
         {
-          sprintf((char *)uartBuffer, "test\r\n");
+          sprintf((char *)uartBuffer, "test\r\n"); //test랑 일치하면 test를 출력한다.
         }
         else
         {
           sprintf((char *)uartBuffer, "received: %s\r\n", msgBuffer);  // 일반 수신 문자열 출력
+          //test가 아니면 받은 문자열이 먼지 출력하는 건대 굳이 필요 없지만 추가 기능 느낌
         }
 
         HAL_UART_Transmit(&huart2, uartBuffer, strlen((char *)uartBuffer), 100);  // 출력
-        msgIndex = 0;  // 버퍼 초기화
+        msgIndex = 0;  // 버퍼 초기화 -> 초기화 해줘야 다음 문자열에 대해서 또 처리가 가능하기 떄문에 초기화
       }
     }
     else
     {
       // Buffer Overflow 방지
-      if (msgIndex < sizeof(msgBuffer) - 1)
+      if (msgIndex < sizeof(msgBuffer) - 1) //msgBuffer의 크기가 128이라서 128바이트 이내의 값만 받을 수 있기 때문에 크기를 제한 
       {
-        msgBuffer[msgIndex++] = receivedmsg;
+        msgBuffer[msgIndex++] = receivedmsg; // 현재 인덱스 위치에 문자를 저장하고, msgIndex를 1씩 증가시켜 다음 위치의 문자를 저장
       }
       else
       {
+        // size가 넘어가면 msgIndex를 초기화하고, memset을 통해서 msgBuffer의 내용을 전부 0으로 지우고, 경고 메세지를 출력
         msgIndex = 0;
         memset(msgBuffer, 0, sizeof(msgBuffer));
         sprintf((char *)uartBuffer, "error: buffer overflow\r\n");

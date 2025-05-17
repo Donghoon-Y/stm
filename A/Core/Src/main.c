@@ -21,8 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <string.h>
-#include <stdio.h>
+#include <string.h> //문자열 처리 함수들(strlen, strcpy, memset 등)을 사용하기 위해서 불러온다.
+#include <stdio.h>  //sprintf() 등 입출력 관련 함수들을 사용하기 위한 헤더를 불러온다.
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,8 +46,8 @@ RTC_HandleTypeDef hrtc;
 UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
-int i = 0;
-uint8_t uartBuffer[512];
+int i = 0; // i를 점차 증가시키는 걸 확인하기 위해서 변수 선언
+uint8_t uartBuffer[512]; //HAL_UART_Trasmit()함수에 보낼 문자열 데이터를 저장하는 버터 512로 선언하면 512바이트까지 가능하다.
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -96,17 +96,18 @@ int main(void)
   MX_RTC_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-  sprintf((char *)uartBuffer, "Hello World\n");
+  sprintf((char *)uartBuffer, "Hello World\n"); //sprintf()는 문자열을 버퍼에 포맷 형식대로 저장하는 함수, sprintf는 char형태로 넣어줘야해서 변환해서 넣고, 한글자씩 저장되어서 통신되는 느낌
   HAL_UART_Transmit(&huart2, uartBuffer, strlen((char *)uartBuffer), 100);
+  // uart2 방식으로 통신하고, 위에서 sprintf를 통해서 저장된 버터값으로 통신, strlen은 전송할 데이터의 길이를 계산(여기서는 12바이트), 100ms 안에 송신이 안되면 오류로 간주한다.
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    sprintf((char *)uartBuffer, "received: %d\n", i);
-    HAL_UART_Transmit(&huart2, uartBuffer, strlen((char *)uartBuffer), 100);
-    i++;
+    sprintf((char *)uartBuffer, "received: %d\n", i); // 이건 문자열 "received: 0\n", "received: 1\n" 이런 식으로 만듦 -> i에 따라서 
+    HAL_UART_Transmit(&huart2, uartBuffer, strlen((char *)uartBuffer), 100); // 위에 설명이랑 똑같고
+    i++; // 파이썬에서 i += 1 이런식으로 i를 증가하는 시킨다. 
     HAL_Delay(1000);
     /* USER CODE END WHILE */
 
