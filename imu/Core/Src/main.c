@@ -28,6 +28,9 @@
 #include "mpu6050.h"
 #include <stdio.h>
 #include <string.h>
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,6 +54,7 @@
 MPU6050_t MPU6050;
 uint8_t msgBuffer[128];
 int16_t halDelayDuration = 100;
+uint8_t accelXCallibrated = 0 ;
 
 double accelX = 0;
 double accelY = 0;
@@ -113,6 +117,12 @@ int main(void)
   /* USER CODE BEGIN 2 */
   while (MPU6050_Init(&hi2c1) == 1);
   HAL_UART_Transmit(&huart2, (uint8_t *)"MPU6050 initialized\r\n", sizeof("MPU6050 initialized\r\n"), 1000);
+  CallibAccelGyro(); 
+  double pitch_gyro = 0 ;
+  double roll_gyro = 0;
+  double pitch_complementary = 0;
+  double roll_complementary = 0;
+  uint32_t prevTime = HAL_GetTick();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -120,13 +130,38 @@ int main(void)
   while (1)
   {
     MPU6050_Read_All(&hi2c1, &MPU6050);
-    accelX = MPU6050.Ax;
-    accelXCallibrated = accelX - baseAccelX;
-
-    sprintf((char *)msgBuffer, "%d\r\n", accelXCallibrated);
-    HAL_UART_Transmit(&huart2, (uint8_t *)msgBuffer, sizeof(msgBuffer), 1000);
-
+    sprintf((char *)msgBuffer,
+        "Ax: %.2f, Ay: %.2f, Az: %.2f, Gx: %.2f, Gy: %.2f\r\n",
+        MPU6050.Ax, MPU6050.Ay, MPU6050.Az,
+        MPU6050.Gx, MPU6050.Gy);
+    HAL_UART_Transmit(&huart2, msgBuffer, strlen((char *)msgBuffer), 100);
     HAL_Delay(halDelayDuration);
+//     double pitch_accel = atan2(MPU6050.Ay, sqrt(MPU6050.Ax * MPU6050.Ax + MPU6050.Az * MPU6050.Az)) * 180 / M_PI;
+//     double roll_accel  = atan2(-MPU6050.Ax, MPU6050.Az) * 180 / M_PI;
+
+// // 2. 시간 계산 (dt)
+
+//     uint32_t currentTime = HAL_GetTick();
+//     double dt = (currentTime - prevTime) / 1000.0;
+//     prevTime = currentTime;
+
+// // 3. 자이로 기반 자세각 누적
+//     pitch_gyro += (MPU6050.Gx - baseGyroX) * dt;
+//     roll_gyro  += (MPU6050.Gy - baseGyroY) * dt;
+
+// // 4. 상보필터 기반 자세각
+//     double alpha = 0.98;
+//     pitch_complementary = alpha * (pitch_complementary + (MPU6050.Gx - baseGyroX) * dt) + (1 - alpha) * pitch_accel;
+//     roll_complementary  = alpha * (roll_complementary  + (MPU6050.Gy - baseGyroY) * dt) + (1 - alpha) * roll_accel;
+
+// // 5. UART 전송
+//     sprintf((char *)msgBuffer,
+//             "%.2f,%.2f,%.2f,%.2f,%.2f,%.2f\r\n",
+//             pitch_accel, pitch_gyro, pitch_complementary,
+//             roll_accel, roll_gyro, roll_complementary);
+//     HAL_UART_Transmit(&huart2, msgBuffer, strlen((char *)msgBuffer), 100);
+
+//     HAL_Delay(halDelayDuration);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -181,7 +216,7 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-voif CallibAccelGyro()
+void CallibAccelGyro()
 {
   double sumAccelX = 0;
   double sumAccelY = 0;
