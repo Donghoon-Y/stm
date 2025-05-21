@@ -1,0 +1,27 @@
+/*
+
+# GIT
+!.gitignore
+!README.md
+
+# NIX
+!default.nix
+!.envrc
+
+# TOOLS
+!Makefile
+!CMakeLists.txt
+!cmake
+!.clang-format
+
+# EXAMPLE
+!Core
+!Drivers
+!CubeMX
+!Project
+!STM32-project-template.ioc
+!.mxproject
+!*.ioc
+!CMakePresets.json
+!startup_stm32f411xe.s
+!STM32F411XX_FLASH.ld

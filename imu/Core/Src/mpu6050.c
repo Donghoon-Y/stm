@@ -13,7 +13,7 @@
 #define GYRO_XOUT_H_REG 0x43
 
 // Setup MPU6050
-#define MPU6050_ADDR (0x68 << 1)
+#define MPU6050_ADDR 0xD0
 const uint16_t i2c_timeout = 100;
 const double Accel_Z_corrector = 14418.0;
 

@@ -28,9 +28,7 @@
 #include "mpu6050.h"
 #include <stdio.h>
 #include <string.h>
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
+#include <math.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -54,7 +52,6 @@
 MPU6050_t MPU6050;
 uint8_t msgBuffer[128];
 int16_t halDelayDuration = 100;
-uint8_t accelXCallibrated = 0 ;
 
 double accelX = 0;
 double accelY = 0;
@@ -63,12 +60,24 @@ double gyroX = 0;
 double gyroY = 0;
 double gyroZ = 0;
 
+double baseangleX = 0;
+double baseangleY = 0;
+double gyroX_1 = 0;
+double gyroY_1 = 0;
+double gyroZ_1 = 0;
+
 double baseAccelX = 0;
 double baseAccelY = 0;
 double baseAccelZ = 0;
 double baseGyroX = 0;
 double baseGyroY = 0;
 double baseGyroZ = 0;
+
+uint32_t prevTime = 0;
+uint32_t currentTime = 0;
+float dt = 0.0f;
+float alpha = 0.02f;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -117,12 +126,7 @@ int main(void)
   /* USER CODE BEGIN 2 */
   while (MPU6050_Init(&hi2c1) == 1);
   HAL_UART_Transmit(&huart2, (uint8_t *)"MPU6050 initialized\r\n", sizeof("MPU6050 initialized\r\n"), 1000);
-  CallibAccelGyro(); 
-  double pitch_gyro = 0 ;
-  double roll_gyro = 0;
-  double pitch_complementary = 0;
-  double roll_complementary = 0;
-  uint32_t prevTime = HAL_GetTick();
+  CallibAccelGyro();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -130,42 +134,50 @@ int main(void)
   while (1)
   {
     MPU6050_Read_All(&hi2c1, &MPU6050);
-    sprintf((char *)msgBuffer,
-        "Ax: %.2f, Ay: %.2f, Az: %.2f, Gx: %.2f, Gy: %.2f\r\n",
-        MPU6050.Ax, MPU6050.Ay, MPU6050.Az,
-        MPU6050.Gx, MPU6050.Gy);
-    HAL_UART_Transmit(&huart2, msgBuffer, strlen((char *)msgBuffer), 100);
+    accelX = MPU6050.Ax;
+    accelY = MPU6050.Ay;
+    accelZ = MPU6050.Az;
+    gyroX = MPU6050.Gx;
+    gyroY = MPU6050.Gy;
+    gyroZ = MPU6050.Gz;
+
+    currentTime = HAL_GetTick();  // 현재 시간(ms)
+    dt = (currentTime - prevTime) / 1000.0f;  // 초 단위로 변환
+    prevTime = currentTime;
+
+
+    baseangleY = atan2(-baseAccelX ,sqrt(baseAccelY*baseAccelY + baseAccelZ*baseAccelZ)) * 180.0 / M_PI;
+    baseangleX = atan2(baseAccelY, baseAccelZ) * 180.0 / M_PI ;
+
+    float angleX = atan2(accelY, accelZ) * 180.0 / M_PI;     // roll
+    float angleY = atan2(-accelX ,sqrt(accelY*accelY + accelZ*accelZ)) * 180.0 / M_PI;  // pitch
+
+
+    int X = round(angleX-baseangleX) ;
+    int Y = round(angleY-baseangleY) ;
+  
+    gyroX_1 += (gyroX-baseGyroX)*dt ;
+    gyroY_1 += (gyroY-baseGyroY)*dt ;
+    gyroZ_1 += (gyroZ-baseGyroZ)*dt ;
+
+    int X_g = round(gyroX_1);
+    int Y_g = round(gyroY_1);
+    int Z_g = round(gyroZ_1);
+
+    int roll = alpha * (gyroX_1 + gyroX*dt) + (1-alpha)*angleX ;
+    int pitch = alpha * (gyroY_1 + gyroY*dt) + (1-alpha)*angleY ;
+
+
+    sprintf((char *)msgBuffer, "%d,%d,%d,%d,%d,%d,%d\r\n",X, Y, X_g, Y_g, Z_g, roll, pitch);
+    HAL_UART_Transmit(&huart2, (uint8_t *)msgBuffer, strlen((char *)msgBuffer), 1000);
+    
+
     HAL_Delay(halDelayDuration);
-//     double pitch_accel = atan2(MPU6050.Ay, sqrt(MPU6050.Ax * MPU6050.Ax + MPU6050.Az * MPU6050.Az)) * 180 / M_PI;
-//     double roll_accel  = atan2(-MPU6050.Ax, MPU6050.Az) * 180 / M_PI;
-
-// // 2. 시간 계산 (dt)
-
-//     uint32_t currentTime = HAL_GetTick();
-//     double dt = (currentTime - prevTime) / 1000.0;
-//     prevTime = currentTime;
-
-// // 3. 자이로 기반 자세각 누적
-//     pitch_gyro += (MPU6050.Gx - baseGyroX) * dt;
-//     roll_gyro  += (MPU6050.Gy - baseGyroY) * dt;
-
-// // 4. 상보필터 기반 자세각
-//     double alpha = 0.98;
-//     pitch_complementary = alpha * (pitch_complementary + (MPU6050.Gx - baseGyroX) * dt) + (1 - alpha) * pitch_accel;
-//     roll_complementary  = alpha * (roll_complementary  + (MPU6050.Gy - baseGyroY) * dt) + (1 - alpha) * roll_accel;
-
-// // 5. UART 전송
-//     sprintf((char *)msgBuffer,
-//             "%.2f,%.2f,%.2f,%.2f,%.2f,%.2f\r\n",
-//             pitch_accel, pitch_gyro, pitch_complementary,
-//             roll_accel, roll_gyro, roll_complementary);
-//     HAL_UART_Transmit(&huart2, msgBuffer, strlen((char *)msgBuffer), 100);
-
-//     HAL_Delay(halDelayDuration);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
+
   /* USER CODE END 3 */
 }
 
