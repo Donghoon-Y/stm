@@ -166,9 +166,10 @@ int main(void)
 
     int roll = alpha * (gyroX_1 + gyroX*dt) + (1-alpha)*angleX ;
     int pitch = alpha * (gyroY_1 + gyroY*dt) + (1-alpha)*angleY ;
+    int yaw = gyroZ_1;
 
 
-    sprintf((char *)msgBuffer, "%d,%d,%d,%d,%d,%d,%d\r\n",X, Y, X_g, Y_g, Z_g, roll, pitch);
+    sprintf((char *)msgBuffer, "%d,%d,%d,%d,%d,%d,%d,%d\r\n",X, Y, X_g, Y_g, Z_g, roll, pitch, yaw);
     HAL_UART_Transmit(&huart2, (uint8_t *)msgBuffer, strlen((char *)msgBuffer), 1000);
     
 
