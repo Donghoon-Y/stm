@@ -1,0 +1,35 @@
+Hello World
+
+[CPU] Idle Coun6
+ter = 302451
+[CPU] Idle Counter = 3020217
+
+[CPU] Idle Counter = 3020228
+
+[CPU] Idle Counter = 3020237
+
+[CPU] Idle Counter = 3020221
+?
+[CPU] Idle Counter = 3019931
+
+[CPU] Idle Counter = 3020214
+?
+[CPU] Idle Counter = 3019937
+
+[CPU] Idle Counter = 3020234
+A
+[CPU] Idle Counter = 3019916
+
+[CPU] Idle Counter = 3020227
+B
+[CPU] Idle Counter = 3019930
+
+[CPU] Idle Counter = 3020220
+C
+[CPU] Idle Counter = 3019920
+?
+[CPU] Idle Counter = 3019904
+
+[CPU] Idle Counter = 3020224
+?
+[CPU] Idle Counter = 3019938

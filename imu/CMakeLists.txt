@@ -31,11 +31,16 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 project(${CMAKE_PROJECT_NAME})
 message("Build type: " ${CMAKE_BUILD_TYPE})
 
+set(LINK_FLAGS "-u _printf_float")
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${LINK_FLAGS}")
+
+
 # Enable CMake support for ASM and C languages
 enable_language(C ASM)
 
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME})
+target_link_options(${CMAKE_PROJECT_NAME} PRIVATE "-u _printf_float")
 
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)

@@ -76,7 +76,7 @@ double baseGyroZ = 0;
 uint32_t prevTime = 0;
 uint32_t currentTime = 0;
 float dt = 0.0f;
-float alpha = 0.02f;
+float alpha = 0.2f;
 
 /* USER CODE END PV */
 
@@ -153,23 +153,24 @@ int main(void)
     float angleY = atan2(-accelX ,sqrt(accelY*accelY + accelZ*accelZ)) * 180.0 / M_PI;  // pitch
 
 
-    int X = round(angleX-baseangleX) ;
-    int Y = round(angleY-baseangleY) ;
+    float X = angleX-baseangleX ;
+    float Y = angleY-baseangleY ;
   
     gyroX_1 += (gyroX-baseGyroX)*dt ;
     gyroY_1 += (gyroY-baseGyroY)*dt ;
     gyroZ_1 += (gyroZ-baseGyroZ)*dt ;
 
-    int X_g = round(gyroX_1);
-    int Y_g = round(gyroY_1);
-    int Z_g = round(gyroZ_1);
+    float X_g = gyroX_1;
+    float Y_g = gyroY_1;
+    float Z_g = gyroZ_1;
 
-    int roll = alpha * (gyroX_1 + gyroX*dt) + (1-alpha)*angleX ;
-    int pitch = alpha * (gyroY_1 + gyroY*dt) + (1-alpha)*angleY ;
-    int yaw = gyroZ_1;
+    float roll = alpha * (gyroX_1 + gyroX*dt) + (1-alpha)*angleX ;
+    float pitch = alpha * (gyroY_1 + gyroY*dt) + (1-alpha)*angleY ;
+    float yaw = gyroZ_1;
 
-
-    sprintf((char *)msgBuffer, "%d,%d,%d,%d,%d,%d,%d,%d\r\n",X, Y, X_g, Y_g, Z_g, roll, pitch, yaw);
+    //sprintf((char *)msgBuffer, "%f,%f,%f,%f,%f,%f,%f,%f\r\n",accelX, accelY, accelZ, gyroX, gyroY, gyroZ,roll, pitch, yaw);
+    sprintf((char *)msgBuffer, "%.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f\r\n", gyroX, gyroY, gyroZ, baseGyroX, baseGyroY, baseGyroZ, gyroX, gyroY, gyroZ,  accelX, accelY, accelZ, baseAccelX, baseAccelY, baseAccelZ, roll, pitch, yaw);
+    //sprintf((char *)msgBuffer, "%.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %.6f, %6f\r\n",  accelX, accelY, accelZ, baseAccelX, baseAccelY, baseAccelZ, X, Y);
     HAL_UART_Transmit(&huart2, (uint8_t *)msgBuffer, strlen((char *)msgBuffer), 1000);
     
 

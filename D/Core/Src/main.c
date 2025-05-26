@@ -47,6 +47,8 @@ UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 uint8_t receivedChar; //uart로 입력된 문자 1개를 저장할 수 있는 변수를 설정 -> 인터럽트 방식으로 수신 시 HAL_UART_Receive_IT()에 결과를 저장
+volatile uint32_t idle_counter = 0;
+uint32_t prevTick = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -110,11 +112,24 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
+    idle_counter++;  // idle 상태 카운터 증가
 
+  // 1초마다 idle_counter UART 전송
+  if (HAL_GetTick() - prevTick >= 1000)  // 1000ms = 1초
+  {
+    prevTick = HAL_GetTick();
+
+    char msg[64];
+    sprintf(msg, "\r\n[CPU] Idle Counter = %lu\r\n", idle_counter);
+    HAL_UART_Transmit(&huart2, (uint8_t*)msg, strlen(msg), HAL_MAX_DELAY);
+
+    idle_counter = 0;
+    /* USER CODE END WHILE */
+    
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
+}
 }
 
 /**
