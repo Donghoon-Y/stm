@@ -1,0 +1,146 @@
+[
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o CMakeFiles/ledDimmer.dir/Core/Src/main.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/main.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/main.c",
+  "output": "CMakeFiles/ledDimmer.dir/Core/Src/main.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o CMakeFiles/ledDimmer.dir/Core/Src/stm32f4xx_it.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/stm32f4xx_it.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/stm32f4xx_it.c",
+  "output": "CMakeFiles/ledDimmer.dir/Core/Src/stm32f4xx_it.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o CMakeFiles/ledDimmer.dir/Core/Src/stm32f4xx_hal_msp.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/stm32f4xx_hal_msp.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/stm32f4xx_hal_msp.c",
+  "output": "CMakeFiles/ledDimmer.dir/Core/Src/stm32f4xx_hal_msp.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o CMakeFiles/ledDimmer.dir/Core/Src/sysmem.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/sysmem.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/sysmem.c",
+  "output": "CMakeFiles/ledDimmer.dir/Core/Src/sysmem.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o CMakeFiles/ledDimmer.dir/Core/Src/syscalls.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/syscalls.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/syscalls.c",
+  "output": "CMakeFiles/ledDimmer.dir/Core/Src/syscalls.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -x assembler-with-cpp -MMD -MP -g -o CMakeFiles/ledDimmer.dir/startup_stm32f411xe.s.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/startup_stm32f411xe.s",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/startup_stm32f411xe.s",
+  "output": "CMakeFiles/ledDimmer.dir/startup_stm32f411xe.s.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f4xx.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/system_stm32f4xx.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Src/system_stm32f4xx.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f4xx.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rtc_ex.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj"
+},
+{
+  "directory": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer",
+  "command": "/usr/bin/arm-none-eabi-gcc -DDEBUG -DSTM32F411xE -DUSE_HAL_DRIVER -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Core/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Device/ST/STM32F4xx/Include -I/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/CMSIS/Include  -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard  -Wall -Wextra -Wpedantic -fdata-sections -ffunction-sections -O0 -g3 -std=gnu11 -o cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj -c /home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c",
+  "file": "/home/merlin/STM32CubeIDE/workspace_1.18.0/ledDimmer/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c",
+  "output": "cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj"
+}
+]
