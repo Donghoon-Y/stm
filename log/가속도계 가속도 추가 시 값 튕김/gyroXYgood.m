@@ -1,67 +1,64 @@
+clc; clear;
+
 % ==============================
-% 1. Load first file: 1.2gyroXgood.txt
+% 1. Load data from both files
 % ==============================
 dataX = readmatrix(fullfile('.', '1.2gyroXgood.csv'));
-data1X = dataX(:, 1:7);
-
-accelangleX_X = data1X(2:end,1);
-accelangleY_X = data1X(2:end,2);
-gyroX_X = data1X(2:end,3);
-gyroY_X = data1X(2:end,4);
-
-% ==============================
-% 2. Load second file: 1.2gyroYgood.txt
-% ==============================
 dataY = readmatrix(fullfile('.', '1.2gyroYgood.csv'));
-data1Y = dataY(:, 1:7);
 
-accelangleX_Y = data1Y(2:end,1);
-accelangleY_Y = data1Y(2:end,2);
-gyroX_Y = data1Y(2:end,3);
-gyroY_Y = data1Y(2:end,4);
+% === File X: Y축 회전으로 X센서 영향 확인 ===
+accelAngleX_X = dataX(2:end, 1);
+accelAngleY_X = dataX(2:end, 2);
+gyroAngleX_X  = dataX(2:end, 3);
+gyroAngleY_X  = dataX(2:end, 4);
+
+% === File Y: Y축 회전 및 복원 ===
+accelAngleX_Y = dataY(2:end, 1);
+accelAngleY_Y = dataY(2:end, 2);
+gyroAngleX_Y  = dataY(2:end, 3);
+gyroAngleY_Y  = dataY(2:end, 4);
 
 % ==============================
-% 3. Plot all in one figure with 4 subplots
+% 2. Plot in 4 subplots
 % ==============================
 figure;
 
-% --------- X from 1.2gyroXgood.txt ---------
+% File X - X축 비교
 subplot(2,2,1);
-plot(accelangleX_X, 'r', 'DisplayName', 'Accel Angle X');
+plot(accelAngleX_X, 'r', 'DisplayName', 'Accel Angle X');
 hold on;
-plot(gyroX_X, 'g', 'DisplayName', 'GyroX Integrated');
-yline(0, 'k--', 'DisplayName', 'y = 0');
+plot(gyroAngleX_X, 'g', 'DisplayName', 'Gyro Angle X');
+yline(0, 'k--');
 xlabel('Sample'); ylabel('Angle (deg)');
-title('File X - X-axis');
+title('File X - X-axis Rotation');
 legend; grid on;
 
-% --------- Y from 1.2gyroXgood.txt ---------
+% File X - Y축 비교
 subplot(2,2,2);
-plot(accelangleY_X, 'r', 'DisplayName', 'Accel Angle Y');
+plot(accelAngleY_X, 'r', 'DisplayName', 'Accel Angle Y');
 hold on;
-plot(gyroY_X, 'g', 'DisplayName', 'GyroY Integrated');
-yline(0, 'k--', 'DisplayName', 'y = 0');
+plot(gyroAngleY_X, 'g', 'DisplayName', 'Gyro Angle Y');
+yline(0, 'k--');
 xlabel('Sample'); ylabel('Angle (deg)');
 title('File X - Y-axis');
 legend; grid on;
 
-% --------- X from 1.2gyroYgood.txt ---------
+% File Y - X축 비교
 subplot(2,2,3);
-plot(accelangleX_Y, 'r', 'DisplayName', 'Accel Angle X');
+plot(accelAngleX_Y, 'r', 'DisplayName', 'Accel Angle X');
 hold on;
-plot(gyroX_Y, 'g', 'DisplayName', 'GyroX Integrated');
-yline(0, 'k--', 'DisplayName', 'y = 0');
+plot(gyroAngleX_Y, 'g', 'DisplayName', 'Gyro Angle X');
+yline(0, 'k--');
 xlabel('Sample'); ylabel('Angle (deg)');
 title('File Y - X-axis');
 legend; grid on;
 
-% --------- Y from 1.2gyroYgood.txt ---------
+% File Y - Y축 비교
 subplot(2,2,4);
-plot(accelangleY_Y, 'r', 'DisplayName', 'Accel Angle Y');
+plot(accelAngleY_Y, 'r', 'DisplayName', 'Accel Angle Y');
 hold on;
-plot(gyroY_Y, 'g', 'DisplayName', 'GyroY Integrated');
-yline(0, 'k--', 'DisplayName', 'y = 0');
+plot(gyroAngleY_Y, 'g', 'DisplayName', 'Gyro Angle Y');
+yline(0, 'k--');
 xlabel('Sample'); ylabel('Angle (deg)');
-title('File Y - Y-axis');
+title('File Y - Y-axis Rotation & Return');
 legend; grid on;
-

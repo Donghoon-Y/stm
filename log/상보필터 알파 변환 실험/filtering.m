@@ -1,7 +1,7 @@
 clc; clear;
 
 % === 1. 데이터 불러오기 ===
-filename = 'alpha_0.5.csv';  % alpha 0.5 실험
+filename = 'alpha_0.2.csv';  % alpha 0.5 실험
 data = readmatrix(filename);
 
 % === 2. 데이터 추출 ===

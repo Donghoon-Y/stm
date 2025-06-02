@@ -1,6 +1,42 @@
 clc; clear all;
 data = readmatrix(fullfile('.', 'rawdataaccel2.xlsx'));
 
+% Raw 가속도 데이터
+accelX = data(2:end,1); 
+accelY = data(2:end,2); 
+accelZ = data(2:end,3);
+
+% STM 측정 기준값
+accelXbase = data(2:end,4); 
+accelYbase = data(2:end,5); 
+accelZbase = data(2:end,6);
+
+% ---------- 시각화 ----------
+figure;
+
+subplot(3,1,1);
+plot(accelX, 'b', 'DisplayName', 'Raw Accel X');
+hold on;
+plot(accelXbase, 'r--', 'DisplayName', 'Base Accel X (STM)');
+legend; title('Accel X vs Base X'); ylabel('g'); grid on;
+
+subplot(3,1,2);
+plot(accelY, 'b', 'DisplayName', 'Raw Accel Y');
+hold on;
+plot(accelYbase, 'r--', 'DisplayName', 'Base Accel Y (STM)');
+legend; title('Accel Y vs Base Y'); ylabel('g'); grid on;
+
+subplot(3,1,3);
+plot(accelZ, 'b', 'DisplayName', 'Raw Accel Z');
+hold on;
+plot(accelZbase, 'r--', 'DisplayName', 'Base Accel Z (STM)');
+legend; title('Accel Z vs Base Z'); xlabel('Sample Index'); ylabel('g'); grid on;
+
+
+%%---%%
+clc; clear all;
+data = readmatrix(fullfile('.', 'rawdataaccel2.xlsx'));
+
 % Raw 데이터
 accelX = data(2:end,1); accelY = data(2:end,2); accelZ = data(2:end,3);
 accelXbase = data(2:end,4); accelYbase = data(2:end,5); accelZbase = data(2:end,6);
