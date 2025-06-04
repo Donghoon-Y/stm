@@ -1,5 +1,5 @@
 clc; clear all;
-data = readmatrix(fullfile('.', 'rawdatagyro.csv'));
+data = readmatrix(fullfile('.', 'data2.csv'));
 
 % --- Raw 센서 데이터 ---
 gyroX = data(2:end,1); 
@@ -30,29 +30,37 @@ legend; title('Gyro Raw Z vs Base'); ylabel('°/s'); xlabel('Sample Index'); gri
 %%-------%%
 
 clc; clear all;
-data = readmatrix(fullfile('.', 'rawdatagyro.csv'));
+data = readmatrix(fullfile('.', 'data2.csv'));
 
 % --- Raw 센서 데이터 ---
-gyroX = data(2:end,1); gyroY = data(2:end,2); gyroZ = data(2:end,3);
-gyroXbase  = data(2:end,4); gyroYbase  = data(2:end,5); gyroZbase = data(2:end,6);
+gyroX = data(2:end,1); 
+gyroY = data(2:end,2); 
+gyroZ = data(2:end,3);
 
-% --- STM에서 실시간 계산한 각도 ---
-gyroXangle_stm  = data(2:end,7);
-gyroYangle_stm  = data(2:end,8);
-gyroZangle_stm  = data(2:end,9);
+gyroXbase = data(2:end,4); 
+gyroYbase = data(2:end,5); 
+gyroZbase = data(2:end,6);
+
+gyroXangle_stm = data(2:end,7);
+gyroYangle_stm = data(2:end,8);
+gyroZangle_stm = data(2:end,9);
+
+dt = data(2:end,10);  % 각 샘플의 dt 값
 
 % --- 후처리 초기화 ---
 N = length(gyroX);
-dt = 0.112;  % dt를 출력하여 확인한 값
+gyroX_1 = gyroXangle_stm(1);
+gyroY_1 = gyroYangle_stm(1);
+gyroZ_1 = gyroZangle_stm(1);
+gyroX_angle = zeros(N,1); 
+gyroY_angle = zeros(N,1); 
+gyroZ_angle = zeros(N,1);
 
-gyroX_1 = 0; gyroY_1 = 0; gyroZ_1 = 0;
-gyroX_angle = zeros(N,1); gyroY_angle = zeros(N,1); gyroZ_angle = zeros(N,1);
-
-% --- 자이로 적분 각도 계산 루프 ---
+% --- 자이로 적분 각도 계산 루프 (샘플별 dt 적용) ---
 for i = 1:N
-    gyroX_1 = gyroX_1 + (gyroX(i) - gyroXbase(i)) * dt;
-    gyroY_1 = gyroY_1 + (gyroY(i) - gyroYbase(i)) * dt;
-    gyroZ_1 = gyroZ_1 + (gyroZ(i) - gyroZbase(i)) * dt;
+    gyroX_1 = gyroX_1 + (gyroX(i) - gyroXbase(i)) * dt(i);
+    gyroY_1 = gyroY_1 + (gyroY(i) - gyroYbase(i)) * dt(i);
+    gyroZ_1 = gyroZ_1 + (gyroZ(i) - gyroZbase(i)) * dt(i);
 
     gyroX_angle(i) = gyroX_1;
     gyroY_angle(i) = gyroY_1;
