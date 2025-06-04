@@ -8,7 +8,6 @@ data = readmatrix(filename);
 gyroX = data(2:end,1); gyroY = data(2:end,2); gyroZ = data(2:end,3);
 baseGyroX = mean(data(2:11,4)); baseGyroY = mean(data(2:11,5)); baseGyroZ = mean(data(2:11,6));
 gyroX_1 = data(2:end,7); gyroY_1 = data(2:end,8); gyroZ_1 = data(2:end,9); % 누적 자이로 각
-
 accelX = data(2:end,10); accelY = data(2:end,11); accelZ = data(2:end,12);
 baseAccelX = mean(data(2:11,13)); baseAccelY = mean(data(2:11,14)); baseAccelZ = mean(data(2:11,15));
 
