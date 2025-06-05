@@ -164,8 +164,8 @@ int main(void)
     float Y_g = gyroY_1;
     float Z_g = gyroZ_1;
 
-    float roll = alpha * (roll + gyroX*dt) + (1-alpha)*angleX ;
-    float pitch = alpha * (pitch + gyroY*dt) + (1-alpha)*angleY ;
+    float roll = alpha * (roll + baseGyroX*dt) + (1-alpha)*angleX ;
+    float pitch = alpha * (pitch + baseGyroY*dt) + (1-alpha)*angleY ;
     float yaw = gyroZ_1;
 
     //sprintf((char *)msgBuffer, "%f,%f,%f,%f,%f,%f,%f,%f\r\n",accelX, accelY, accelZ, gyroX, gyroY, gyroZ,roll, pitch, yaw);
