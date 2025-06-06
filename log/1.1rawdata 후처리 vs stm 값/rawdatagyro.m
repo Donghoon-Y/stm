@@ -1,5 +1,5 @@
 clc; clear all;
-data = readmatrix(fullfile('.', 'data2.csv'));
+data = readmatrix(fullfile('.', 'rawdatagyro.csv'));
 
 % --- Raw 센서 데이터 ---
 gyroX = data(2:end,1); 
@@ -30,7 +30,7 @@ legend; title('Gyro Raw Z vs Base'); ylabel('°/s'); xlabel('Sample Index'); gri
 %%-------%%
 
 clc; clear all;
-data = readmatrix(fullfile('.', 'data2.csv'));
+data = readmatrix(fullfile('.', 'rawdatagyro.csv'));
 
 % --- Raw 센서 데이터 ---
 gyroX = data(2:end,1); 
